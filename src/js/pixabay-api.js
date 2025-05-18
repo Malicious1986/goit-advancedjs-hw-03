@@ -1,3 +1,4 @@
+import axios from 'axios';
 const BASE_URL = 'https://pixabay.com/api/';
 
 function getParams(query) {
@@ -14,7 +15,7 @@ function getParams(query) {
 
 export function getPictures(query) {
   const url = BASE_URL + getParams(query);
-  return fetch(url)
-    .then(response => response.json())
+  return axios(url)
+    .then(response => response.data)
     .catch(error => console.error(error));
 }
